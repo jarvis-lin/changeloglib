@@ -9,7 +9,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 7
+        minSdkVersion 14
         targetSdkVersion 23
         versionName project.VERSION_NAME
         versionCode Integer.parseInt(project.VERSION_CODE)
@@ -42,9 +42,9 @@ dependencies {
     // ChangeLog Library
     compile project(':ChangeLogLibrary')
     // Support Libraries
-    compile 'com.android.support:support-v4:23.3.0'
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:design:23.3.0'
+    compile 'com.android.support:support-v4:26.1.0'
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:design:26.1.0'
     //To test layout
     compile 'org.lucasr.dspec:dspec:0.1.1'
 }
