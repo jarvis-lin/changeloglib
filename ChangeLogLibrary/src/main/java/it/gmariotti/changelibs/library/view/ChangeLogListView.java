@@ -144,8 +144,12 @@ public class ChangeLogListView extends ListView implements AdapterView.OnItemCli
 			mAdapter.setmRowHeaderLayoutId(mRowHeaderLayoutId);
 
 			//Parse in a separate Thread to avoid UI block with large files
-			if (mChangeLogFileResourceUrl==null || (mChangeLogFileResourceUrl!=null && Util.isConnected(getContext())))
-				new ParseAsyncTask(mAdapter,parse).execute();
+			if (mChangeLogFileResourceUrl==null || (mChangeLogFileResourceUrl!=null && Util.isConnected(getContext()))) {
+			    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+			        new ParseAsyncTask(mAdapter, parse).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+			    else
+			        new ParseAsyncTask(mAdapter, parse).execute();
+            }
 			else
 				Toast.makeText(getContext(),R.string.changelog_internal_error_internet_connection,Toast.LENGTH_LONG).show();
 			setAdapter(mAdapter);
